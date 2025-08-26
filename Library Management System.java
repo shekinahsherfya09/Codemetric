@@ -12,9 +12,12 @@ class Book {
         this.isAvailable = true;
     }
 
-    @Override
-    public String toString() {
-        return "\"" + title + "\" by " + author + " - " + (isAvailable ? "Available" : "Not Available");
+    // Custom display method instead of toString()
+    void display() {
+        System.out.println("Title : " + title);
+        System.out.println("Author: " + author);
+        System.out.println("Status: " + (isAvailable ? "Available" : "Not Available"));
+        System.out.println("---------------------------");
     }
 }
 
@@ -40,7 +43,7 @@ public class LibraryManagementSystem {
             }
 
             choice = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine(); // consume newline
 
             switch (choice) {
                 case 1 -> addBook();
@@ -107,7 +110,7 @@ public class LibraryManagementSystem {
         } else {
             System.out.println("\nLibrary Book List:");
             for (Book book : books) {
-                System.out.println(book);
+                book.display();
             }
         }
     }

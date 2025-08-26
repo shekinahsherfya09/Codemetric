@@ -66,11 +66,12 @@ public class GradeCalculator {
 
         // Display report
         System.out.println("\n===== Student Grade Report =====");
-        System.out.printf("%-20s %-10s %-10s%n", "Name", "Marks", "Grade");
-        System.out.println("-----------------------------------------");
         for (Student s : students) {
-            System.out.printf("%-20s %-10d %-10s%n", s.name, s.marks, s.grade);
-        }
+            System.out.println("Name: " + s.name);
+            System.out.println("Marks: " + s.marks);
+            System.out.println("Grade: " + s.grade);
+            System.out.println("----------------------");
+}
 
         scanner.close();
     }

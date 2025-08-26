@@ -1,21 +1,22 @@
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
 public class NumberGuessingGame {
     public static void main(String[] args) {
         Random rand = new Random();
-        int secretNumber = rand.nextInt(100) + 1; 
+        int secretNumber = rand.nextInt(100) + 1;
         int attempts = 0;
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("Welcome to the Number Guessing Game!");
         System.out.println("I'm thinking of a number between 1 and 100.");
 
         while (true) {
             System.out.print("Enter your guess: ");
-            String input = scanner.nextLine();
 
             try {
-                int guess = Integer.parseInt(input);
+                int guess = scanner.nextInt();
                 attempts++;
 
                 if (guess < secretNumber) {
@@ -26,8 +27,9 @@ public class NumberGuessingGame {
                     System.out.println("Congratulations! You guessed the number in " + attempts + " attempts.");
                     break;
                 }
-            } catch (NumberFormatException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input. Please enter a numeric value.");
+                scanner.next();  // consume the invalid input so the scanner doesn't loop infinitely
             }
         }
 
